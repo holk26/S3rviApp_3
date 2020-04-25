@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "952187511551",
+    "firebase_url": "https://serviaapp-sena.firebaseio.com",
+    "project_id": "serviaapp-sena",
+    "storage_bucket": "serviaapp-sena.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952187511551:android:5524518b9afb8eeeea22ca",
+        "android_client_info": {
+          "package_name": "com.hcabreraar.s3rviapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952187511551-s0tua8o7lbkhtqmm5fbqbd3d9abf7qrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz4fnn3SkjZeU_74JZGHumaNiZL10onLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952187511551-s0tua8o7lbkhtqmm5fbqbd3d9abf7qrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

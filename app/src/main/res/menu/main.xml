@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <item
+        android:id="@+id/menu_inicio_sesion"
+        android:title="Iniciar Sesion" />
+    <item
+        android:id="@+id/help"
+        android:title="lorem" />
+    <item
+        android:id="@+id/Acerca3"
+        android:title="@string/acerca_de" />
+    <item
+        android:id="@+id/salir12"
+        android:title="Salir" />
+
+
+
+
+</menu>
