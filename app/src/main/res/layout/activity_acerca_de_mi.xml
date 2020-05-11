@@ -4,14 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_vertical_margin"
     tools:context=".AcercaDeMi">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!--<com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/profesionX221"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:hint="Servicios"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/ic_add_circle_black_24dp"
+            app:errorEnabled="true"
+            app:startIconDrawable="@drawable/bottom_perfil">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/servicioTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:ems="10"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.google.android.material.chip.ChipGroup>-->
 
 
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

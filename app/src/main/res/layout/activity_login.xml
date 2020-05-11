@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
+    tools:context=".Login"
     >
 
     <LinearLayout
@@ -14,14 +15,17 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+
+
         <ImageView
+            android:padding="5dp"
             android:id="@+id/googleIcon"
             style="@style/ThemeOverlay.FirebaseIcon"
             android:layout_width="23mm"
             android:layout_height="23mm"
             android:contentDescription="@string/desc_firebase_lockup"
             android:scrollbarTrackVertical="@drawable/bottom_perfil"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/persona" />
 
         <TextView
             android:id="@+id/textInicioSesion"
@@ -40,6 +44,8 @@
             android:id="@+id/detail"
             style="@style/ThemeOverlay.MyTextDetail"
             tools:text="Firebase User ID: 123456789abc" />
+
+
         <TextView
             android:id="@+id/ciudad3"
             style="@style/ThemeOverlay.MyTextDetail"
@@ -66,6 +72,7 @@
             android:layout_centerInParent="true"
             android:visibility="visible"
             tools:visibility="gone" />
+
 
     </LinearLayout>
 

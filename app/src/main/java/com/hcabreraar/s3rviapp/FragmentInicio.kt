@@ -39,6 +39,8 @@ class FragmentInicio : Fragment() {
         viewModel = ViewModelProviders.of(this).get(FragmentInicioViewModel::class.java)
         // TODO: Use the ViewModel
 
+
+
         //val listView: View? = activity?.findViewById(R.id.action_perfil)
         //listView?.visibility = View.VISIBLE
 

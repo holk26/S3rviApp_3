@@ -3,6 +3,7 @@
     package="com.hcabreraar.s3rviapp">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegistroPersonaX"></activity>
+        <activity android:name=".ViewPerfil"></activity>
+        <activity android:name=".RegistroPersonaX" />
         <activity
             android:name=".SplashScreens"
             android:noHistory="true"

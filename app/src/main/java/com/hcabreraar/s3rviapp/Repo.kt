@@ -22,7 +22,8 @@ class Repo {
                 val servicioUs = document.getString("Servicio")
                 val ciudadUs = document.getString("ciudad")
                 val telefonUs = document.getString("telefono")
-                val usuario = Blog(imagenUrl!!,nombreUs!!,servicioUs!!,ciudadUs!!,telefonUs!!)
+                val idUsuario = document.getString("idUsuario")
+                val usuario = Blog(imagenUrl!!,nombreUs!!,servicioUs!!,ciudadUs!!,telefonUs!!,idUsuario!!)
 
 
                 listData.add(usuario)

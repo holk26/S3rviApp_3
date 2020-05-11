@@ -39,11 +39,14 @@ class Login : BaseActivity(), View.OnClickListener {
 
 
 
+
     private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+
 
 
 
@@ -100,6 +103,13 @@ class Login : BaseActivity(), View.OnClickListener {
         }//Fin Switch1
 
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(baseContext, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 
@@ -210,7 +220,7 @@ class Login : BaseActivity(), View.OnClickListener {
             textInicioSesion.text = getString(R.string.bienvenido)
             status.text = getString(R.string.google_status_fmt, user.displayName)
             detail.text = getString(R.string.firebase_status_fmt, user.email)
-            Picasso.get().load(user.photoUrl).into(googleIcon);
+            Picasso.get().load(user.photoUrl).into(googleIcon)
             //Picasso.get().setIndicatorsEnabled(true);
             vistaRegistrado()
             datosFireStone()
@@ -229,7 +239,7 @@ class Login : BaseActivity(), View.OnClickListener {
         textInicioSesion.text = getString(R.string.google_title_text)
         status.setText(R.string.signed_out)
         detail.text = null
-        googleIcon.setImageResource(R.mipmap.ic_launcher)
+        googleIcon.setImageResource(R.drawable.persona)
         signInButton.visibility = View.VISIBLE
         signOutAndDisconnect.visibility = View.GONE
         mostrarEnLista.visibility = View.GONE

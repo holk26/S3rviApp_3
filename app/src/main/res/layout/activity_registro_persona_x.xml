@@ -1,64 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".RegistroPersonaX"
-    android:orientation="vertical">
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+
+    tools:context=".RegistroPersonaX">
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:id="@+id/ServicioField"
-            android:hint="Servicio..."
-           />
+            android:orientation="vertical">
+
+           <!-- <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagePerfilX2"
+                android:layout_width="100dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp"
+                app:srcCompat="@drawable/persona" />-->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp">
 
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/ciudadField"
-            android:hint="Ciudad..." />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:id="@+id/phoneField"
-        android:hint="Telefono..." />
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Registro"
+                        android:textSize="20sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/profesion22"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:hint="Profesion"
+                        app:endIconMode="clear_text"
+                        app:errorEnabled="true"
+                        app:startIconDrawable="@drawable/bottom_perfil">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/ProfesionField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:ems="10"
+                            android:inputType="text" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/nombreTextInputLayout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:hint="Ciudad"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/bottom_perfil">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/ciudadField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:ems="10"
+                            android:inputType="text" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/nombreTextInputLayout6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Telefono"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="10"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/bottom_perfil">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phoneField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:ems="10"
+                            android:inputType="phone" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/serviciotagX221"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:hint="Servicios"
+                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/ic_add_circle_black_24dp"
+                        app:errorEnabled="true"
+                        app:startIconDrawable="@drawable/bottom_perfil">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/servicioTag"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:ems="10"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
 
 
 
-    <Button
-        android:text="Registrate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:id="@+id/registerBtn"
-        android:elevation="0dp"
-        android:foregroundGravity="center"
-        android:theme="@style/ThemeOverlay.MyDarkButton"/>
+                    <CheckBox
+                        android:id="@+id/checkBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Acepta terminos y condiciones" />
 
-    <TextView
-        android:text="prueba"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:id="@+id/textView"
-        android:layout_below="@+id/registerBtn"
-        android:layout_centerHorizontal="true"
-        android:foregroundGravity="center"
-        android:gravity="center"
-        />
-</LinearLayout>
+
+                    <Button
+                        android:id="@+id/registerBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:elevation="0dp"
+                        android:foregroundGravity="center"
+                        android:text="Registrate"
+                        android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

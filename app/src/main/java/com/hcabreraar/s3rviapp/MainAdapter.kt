@@ -1,13 +1,19 @@
 package com.hcabreraar.s3rviapp
 
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
+import com.vdx.designertoast.DesignerToast
 import kotlinx.android.synthetic.main.item_fragmento_inicio.view.*
+
 
 class MainAdapter(private val context: Context) : RecyclerView.Adapter<MainAdapter.MainViwHolder>() {
 
@@ -43,16 +49,22 @@ class MainAdapter(private val context: Context) : RecyclerView.Adapter<MainAdapt
 
     inner class MainViwHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         fun bindView(user:Blog){
-            Glide.with(context).load(user.imageUrl).into(itemView.circleImag)
+            //Glide.with(context).load(user.imageUrl).into(itemView.circleImag)
+            Picasso.get().load(user.imageUrl).placeholder(R.drawable.persona).into(itemView.circleImag)
             itemView.text_title.text = user.nombreUs
             itemView.servicioXml.text = "Servicio: "+user.servicioUs
             itemView.ciudadXml.text = "Ubicacion: "+user.ciudadUs
             itemView.telefonoXml.text = "Telefono: "+user.telefonUs
-
-
+            var userid3 = user.idUsuario
 
 
             itemView.setOnClickListener {
+               // DesignerToast.Success(context, userid3, Gravity.CENTER, Toast.LENGTH_SHORT)
+
+                val intent = Intent(context.applicationContext, ViewPerfil::class.java)
+                intent.addFlags(FLAG_ACTIVITY_NEW_TASK)
+                intent.putExtra("ID", userid3)
+                context.startActivity(intent)
 
             }
 
