@@ -8,10 +8,8 @@ import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -32,6 +30,7 @@ class RegistroPersonaX : AppCompatActivity() {
     val urlPhotoR = ""
     val REQUEST_IMAGE_CAPTURE = 1
     lateinit var text_array : Array<String>
+    var mutableList: MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +45,9 @@ class RegistroPersonaX : AppCompatActivity() {
 
         registerBtn.setOnClickListener(){
             //Toast.makeText(this@RegistroPersonaX, "logiado"+nameField.getText().toString(), Toast.LENGTH_SHORT).show()
-            prueba()
             chipServicio()
-            Log.d("this is my array", "arr: " + Arrays.toString(text_array)+"-perro-"+text_array);
+            cargarFirebaseDatos()
+
 
         }
 
@@ -62,39 +61,37 @@ class RegistroPersonaX : AppCompatActivity() {
 
         serviciotagX221.setEndIconOnClickListener {
             // Respond to end icon presses
-            //DesignerToast.Success(this, servicioTag.getText().toString(), Gravity.CENTER, Toast.LENGTH_SHORT)
 
             text_array = servicioTag.text!!.toString().split(" ".toRegex())
                 .dropLastWhile { it.isEmpty() }.toTypedArray()
+            Log.d("homero", "Document:"+ text_array.contentToString())
 
-            val inflater = LayoutInflater.from(this@RegistroPersonaX)
-
-            for (text in text_array){
-
-                val chip_item2 = inflater.inflate(R.layout.chip_item,null,false) as Chip
-                chip_item2.text = text
-
-                chip_item2.setOnCloseIconClickListener{view ->
-
-                    chip_group2.removeView(view)
-                    Log.d("this is my array", "arr: " + view)
+            inflarChip(text_array)
 
 
-                }
-                chip_group2.addView(chip_item2)
-                chip_item2.text
-
-                servicioTag.setText("");
-                Log.d("this is my array", "arr: " + Arrays.toString(text_array)+"-perro-"+text_array);
-                //DesignerToast.Success(this@RegistroPersonaX, "Se Agrego el servicio ", Gravity.CENTER, Toast.LENGTH_SHORT)
-
-            }
         }
 
-        //chip_group2.setOnCheckedChangeListener()
-        chip_group2.setOnCheckedChangeListener { group, checkedId ->
-            // Handle the checked chip change.
-            DesignerToast.Success(this@RegistroPersonaX, "cambiao"+checkedId, Gravity.CENTER, Toast.LENGTH_SHORT)
+
+    }//onCreate fin
+
+    private fun inflarChip(holk: Array<String>) {
+
+        val inflater = LayoutInflater.from(this@RegistroPersonaX)
+
+        for (text in holk){
+
+            val chip_item2 = inflater.inflate(R.layout.chip_item,null,false) as Chip
+            chip_item2.text = text
+
+            chip_item2.setOnCloseIconClickListener{view ->
+
+                chip_group2.removeView(view)
+
+            }
+            chip_group2.addView(chip_item2)
+            chip_item2.text
+
+            servicioTag.setText("");
 
         }
 
@@ -127,8 +124,8 @@ class RegistroPersonaX : AppCompatActivity() {
 
 
 
-
-    fun prueba(){
+//Carga los datos a la base de datos
+    private fun cargarFirebaseDatos(){
 
         convSt(auth.uid)
         //estadoXml.text = auth.uid
@@ -140,16 +137,10 @@ class RegistroPersonaX : AppCompatActivity() {
            x = it
         }
 
-        // Create a new user with a first, middle, and last name
-        val city = hashMapOf(
-            "telefono" to "3102796853",
-            "servicio" to "Matenimiento",
-            "ciudad" to "Garzón"
-        )
-
         val usuario33 = hashMapOf(
             "profesion" to ProfesionField.getText().toString(),
-            "Servicio" to "arreglo lavadoras",
+            "ServicioMatriz" to mutableList,
+            "Servicio" to "motero",
             "ciudad" to ciudadField.getText().toString(),
             "telefono" to phoneField.getText().toString(),
             "nombre" to userName,
@@ -204,6 +195,17 @@ class RegistroPersonaX : AppCompatActivity() {
                         registerBtn.text = "Actualizar"
                         ciudadField.text = document.getString("ciudad")!!.toEditable()
                         //ServicioField.text = document.getString("Servicio")!!.toEditable()
+
+                        //arrayOf(document.getString("ServicioMatrix")!!.toEditable())
+                        //var mdsd : Array<String> =
+                        //var dfdf = document.get("ServicioMatrix")!! as Array<String>
+
+
+                        //Log.d("homero", "Document:"+dfdf)
+
+
+                        inflarChip(arrayOf("dfdf","msf"))
+
                         phoneField.text = document.getString("telefono")!!.toEditable()
                         ProfesionField.text = document.getString("profesion")!!.toEditable()
                        // Picasso.get().load(userFoto).into(imagePerfilX2)
@@ -239,21 +241,15 @@ class RegistroPersonaX : AppCompatActivity() {
 
 
     private fun chipServicio(){
-        lateinit var servicioAr : Array<String>
+
         for (i in 0 until chip_group2.childCount) {
-            val chip = chip_group2.getChildAt(i)
-
-            Log.d("Homero cabrera araque", "arr: "+chip.id)
-            //chip.isClickable = chip.id != chip_group2.checkedChipId
-            //servicioAr[i] = chip.id.toString()
-
+                val chip = chip_group2.getChildAt(i) as Chip
+                var vChip : Chip = chip.findViewById(chip.id)
+                var chipNameX3 = vChip.getText().toString()
+                mutableList.add(chipNameX3)
         }
-
-
+        Log.d("chipServicio", "mutableListO = $mutableList")
 
     }
-
-
-
 
 }

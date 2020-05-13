@@ -282,7 +282,7 @@ class Login : BaseActivity(), View.OnClickListener {
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                     ciudad3.text = "Ciudad: "+document.getString("ciudad")
-                    servicio3.text = "Servicio: "+document.getString("Servicio")
+                    servicio3.text = "Profesion: "+document.getString("profesion")
                     telefono3.text = "Telefono: "+document.getString("telefono")
                     if (document.getString("estado") == "verificado" ){
                         //aliado_app.visibility = View.GONE
@@ -293,11 +293,7 @@ class Login : BaseActivity(), View.OnClickListener {
                         aliado_app.text = "QUIERO SER ALIADO"
                     }
 
-                    if (document.getBoolean("mostrarEnLista") == true){
-                        mostrarEnLista.isChecked = true
-                    }else{
-                        mostrarEnLista.isChecked = false
-                    }
+                    mostrarEnLista.isChecked = document.getBoolean("mostrarEnLista") == true
 
 
 

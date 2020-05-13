@@ -13,30 +13,50 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--<com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/profesionX221"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:hint="Servicios"
-            app:endIconMode="custom"
-            app:endIconDrawable="@drawable/ic_add_circle_black_24dp"
-            app:errorEnabled="true"
-            app:startIconDrawable="@drawable/bottom_perfil">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/servicioTag"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:ems="10"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group2"
+            android:id="@+id/chip_group_prueba"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </com.google.android.material.chip.ChipGroup>-->
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPruebaX1"
+                style="@style/Widget.MaterialComponents.Chip.Entry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="false"
+                android:text="Tag1"
+                app:checkedIconVisible="false"
+                app:closeIcon="@drawable/ic_clear_black_24dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPruebaX2"
+                style="@style/Widget.MaterialComponents.Chip.Entry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="false"
+                android:text="Tag22"
+                app:checkedIconVisible="false"
+                app:closeIcon="@drawable/ic_clear_black_24dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPruebaX3"
+                style="@style/Widget.MaterialComponents.Chip.Entry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="false"
+                android:text="Tag232"
+                app:checkedIconVisible="false"
+                app:closeIcon="@drawable/ic_clear_black_24dp" />
+
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <Button
+            android:id="@+id/btn_pruebaTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
 
 
     </LinearLayout>
