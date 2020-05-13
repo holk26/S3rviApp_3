@@ -10,9 +10,12 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.Chip
+import com.google.common.collect.Iterables
+import com.google.common.collect.Iterables.toArray
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.vdx.designertoast.DesignerToast
 import kotlinx.android.synthetic.main.activity_registro_persona_x.*
@@ -72,6 +75,7 @@ class RegistroPersonaX : AppCompatActivity() {
         }
 
 
+
     }//onCreate fin
 
     private fun inflarChip(holk: Array<String>) {
@@ -97,6 +101,8 @@ class RegistroPersonaX : AppCompatActivity() {
 
     }
 
+
+
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
@@ -111,6 +117,7 @@ class RegistroPersonaX : AppCompatActivity() {
             Toast.makeText(this@RegistroPersonaX, "logiado", Toast.LENGTH_SHORT).show()
             userName = user2.displayName.toString()
             userFoto = user2.photoUrl.toString()
+            chip_group2.removeAllViews()
             datosFireStone()
 
 
@@ -196,15 +203,7 @@ class RegistroPersonaX : AppCompatActivity() {
                         ciudadField.text = document.getString("ciudad")!!.toEditable()
                         //ServicioField.text = document.getString("Servicio")!!.toEditable()
 
-                        //arrayOf(document.getString("ServicioMatrix")!!.toEditable())
-                        //var mdsd : Array<String> =
-                        //var dfdf = document.get("ServicioMatrix")!! as Array<String>
-
-
-                        //Log.d("homero", "Document:"+dfdf)
-
-
-                        inflarChip(arrayOf("dfdf","msf"))
+                        llamarMatriz(document)
 
                         phoneField.text = document.getString("telefono")!!.toEditable()
                         ProfesionField.text = document.getString("profesion")!!.toEditable()
@@ -227,7 +226,11 @@ class RegistroPersonaX : AppCompatActivity() {
             }
     }
 
-
+    private fun llamarMatriz(document: DocumentSnapshot) {
+        val listFb = document.get("ServicioMatriz")!! as List<String>
+        //inflarChip(arrayOf("dfdf","msf"))
+        inflarChip(listFb.toTypedArray())
+    }
 
 
     private fun dispatchTakePictureIntent() {
