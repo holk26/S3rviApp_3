@@ -16,21 +16,6 @@ class AcercaDeMi : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_acerca_de_mi)
 
-        btn_pruebaTag.setOnClickListener {
-
-            for (i in 0 until chip_group_prueba.childCount) {
-                val chip = chip_group_prueba.getChildAt(i) as Chip
-
-                var vChip : Chip = chip.findViewById(chip.id)
-                var chipNameX3 = vChip.getText().toString()
-                Log.d("homero", "Document: "+chipNameX3)
-
-
-            }
-
-        }
-
-
 
 
 

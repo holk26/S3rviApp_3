@@ -50,12 +50,11 @@ class MainAdapter(private val context: Context) : RecyclerView.Adapter<MainAdapt
     inner class MainViwHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         fun bindView(user:Blog){
             //Glide.with(context).load(user.imageUrl).into(itemView.circleImag)
-            Picasso.get().load(user.imageUrl).placeholder(R.drawable.persona).into(itemView.circleImag)
-            itemView.text_title.text = user.nombreUs
-            itemView.servicioXml.text = "Servicio: "+user.servicioUs
-            itemView.ciudadXml.text = "Ubicacion: "+user.ciudadUs
-            itemView.telefonoXml.text = "Telefono: "+user.telefonUs
-            var userid3 = user.idUsuario
+            Picasso.get().load(user.imagenUrlUs).placeholder(R.drawable.persona).into(itemView.circleImag)
+            itemView.nombreEmpresaXml.text = user.nombreUs
+            itemView.servicioXml.text = user.profesionUs
+            itemView.ciudadXml.text = user.ciudadUs
+            var userid3 = user.idUsuarioUs
 
 
             itemView.setOnClickListener {

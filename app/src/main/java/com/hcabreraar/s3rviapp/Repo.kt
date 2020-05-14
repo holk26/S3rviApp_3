@@ -15,16 +15,14 @@ class Repo {
             val listData = mutableListOf<Blog>()
             for(document in result){
 
-                if (document.getBoolean("mostrarEnLista") == true){
+                if (document.getBoolean("mostrarEnListaBd") == true){
 
-                val imagenUrl = document.getString("foto")
-                val nombreUs = document.getString("nombre")
-                val servicioUs = document.getString("Servicio")
-                val ciudadUs = document.getString("ciudad")
-                val telefonUs = document.getString("telefono")
-                val idUsuario = document.getString("idUsuario")
-                val usuario = Blog(imagenUrl!!,nombreUs!!,servicioUs!!,ciudadUs!!,telefonUs!!,idUsuario!!)
-
+                val imagenUrlUs = document.getString("fotoBd")
+                val nombreUs = document.getString("nombreEmpresaBd")
+                val profesionUs = document.getString("profesionBd")
+                val ciudadUs = document.getString("ciudadBd")
+                val idUsuarioUs = document.getString("idUsuarioBd")
+                val usuario = Blog(imagenUrlUs!!,nombreUs!!,profesionUs!!,ciudadUs!!,idUsuarioUs!!)
 
                 listData.add(usuario)
                 }

@@ -155,14 +155,14 @@ class MainActivity : AppCompatActivity() {
                 Btn_inicio_sesion()
                 true
             }
-            R.id.help -> {
+           /* R.id.help -> {
                 //showHelp()
                 //Toast.makeText(this@MainActivity, "You clicked me help.", Toast.LENGTH_SHORT).show()
                 DesignerToast.Success(this@MainActivity, "Success Toast", Gravity.CENTER, Toast.LENGTH_SHORT)
 
 
                 true
-            }
+            }*/
             R.id.Acerca3 -> {
                 val intent = Intent(baseContext, AcercaDeMi::class.java)
                 startActivity(intent)

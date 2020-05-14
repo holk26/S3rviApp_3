@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_registro_persona_x.*
 import java.util.*
 
 
-class RegistroPersonaX : AppCompatActivity() {
+class RegistroPersonaX : BaseActivity() {
 
     private lateinit var auth: FirebaseAuth
     fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
@@ -47,9 +47,16 @@ class RegistroPersonaX : AppCompatActivity() {
        db = FirebaseFirestore.getInstance()
 
         registerBtn.setOnClickListener(){
-            //Toast.makeText(this@RegistroPersonaX, "logiado"+nameField.getText().toString(), Toast.LENGTH_SHORT).show()
-            chipServicio()
-            cargarFirebaseDatos()
+            if (verificarConexion() != null) {
+                showProgressDialog()
+                //Toast.makeText(this@RegistroPersonaX, "logiado"+nameField.getText().toString(), Toast.LENGTH_SHORT).show()
+                chipServicio()
+                cargarFirebaseDatos()
+
+            }else{
+            Toast.makeText(this@RegistroPersonaX, "Revisa tu conexion a internet", Toast.LENGTH_SHORT).show()
+        }
+
 
 
         }
@@ -105,6 +112,7 @@ class RegistroPersonaX : AppCompatActivity() {
 
     public override fun onStart() {
         super.onStart()
+        showProgressDialog()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         updateUI(currentUser)
@@ -113,12 +121,14 @@ class RegistroPersonaX : AppCompatActivity() {
 
 
     private fun updateUI(user2: FirebaseUser?) {
+
         if (user2 != null) {
-            Toast.makeText(this@RegistroPersonaX, "logiado", Toast.LENGTH_SHORT).show()
+
             userName = user2.displayName.toString()
             userFoto = user2.photoUrl.toString()
-            chip_group2.removeAllViews()
+
             datosFireStone()
+            hideProgressDialog()
 
 
         }else{
@@ -145,20 +155,19 @@ class RegistroPersonaX : AppCompatActivity() {
         }
 
         val usuario33 = hashMapOf(
-            "profesion" to ProfesionField.getText().toString(),
-            "ServicioMatriz" to mutableList,
-            "Servicio" to "motero",
-            "ciudad" to ciudadField.getText().toString(),
-            "telefono" to phoneField.getText().toString(),
-            "nombre" to userName,
-            "foto" to userFoto,
-            "estado" to "verificado",
-            "mostrarEnLista" to false,
-            "fecha_registro" to Timestamp(Date()),
-            "likes" to 0,
-            "dislike" to 0,
-            "hizo_like" to false,
-            "idUsuario" to x
+            "profesionBd" to ProfesionField.getText().toString(),
+            "ServicioMatrizBd" to mutableList,
+            "nombreEmpresaBd" to nombreEmpresaField.getText().toString(),
+            "ciudadBd" to ciudadField.getText().toString(),
+            "telefonoBd" to phoneField.getText().toString(),
+            "emailBd" to correoField.getText().toString(),
+            "nombreBd" to userName,
+            "fotoBd" to userFoto,
+            "estadoBd" to "verificado",
+            "likeBd" to 0,
+            "dislikeBd" to 0,
+            "mostrarEnListaBd" to false,
+            "idUsuarioBd" to x
         )
 
         db.collection("usuarios").document(convSt(auth.uid))
@@ -198,15 +207,16 @@ class RegistroPersonaX : AppCompatActivity() {
             .addOnSuccessListener { document ->
                 if (document != null) {
 
-                    if (document.getString("estado") == "verificado" ){
+                    if (document.getString("estadoBd") == "verificado" ){
                         registerBtn.text = "Actualizar"
-                        ciudadField.text = document.getString("ciudad")!!.toEditable()
-                        //ServicioField.text = document.getString("Servicio")!!.toEditable()
+                        ciudadField.text = document.getString("ciudadBd")!!.toEditable()
+                        correoField.text = document.getString("emailBd")!!.toEditable()
+                        nombreEmpresaField.text = document.getString("nombreEmpresaBd")!!.toEditable()
 
                         llamarMatriz(document)
 
-                        phoneField.text = document.getString("telefono")!!.toEditable()
-                        ProfesionField.text = document.getString("profesion")!!.toEditable()
+                        phoneField.text = document.getString("telefonoBd")!!.toEditable()
+                        ProfesionField.text = document.getString("profesionBd")!!.toEditable()
                        // Picasso.get().load(userFoto).into(imagePerfilX2)
 
                     }else{
@@ -227,7 +237,8 @@ class RegistroPersonaX : AppCompatActivity() {
     }
 
     private fun llamarMatriz(document: DocumentSnapshot) {
-        val listFb = document.get("ServicioMatriz")!! as List<String>
+        chip_group2.removeAllViews()
+        val listFb = document.get("ServicioMatrizBd")!! as List<String>
         //inflarChip(arrayOf("dfdf","msf"))
         inflarChip(listFb.toTypedArray())
     }

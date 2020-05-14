@@ -6,9 +6,7 @@
     <item
         android:id="@+id/menu_inicio_sesion"
         android:title="Iniciar Sesion" />
-    <item
-        android:id="@+id/help"
-        android:title="lorem" />
+
     <item
         android:id="@+id/Acerca3"
         android:title="@string/acerca_de" />

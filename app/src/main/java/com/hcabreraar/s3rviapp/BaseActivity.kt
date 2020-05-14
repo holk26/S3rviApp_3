@@ -2,6 +2,8 @@ package com.hcabreraar.s3rviapp
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
@@ -19,6 +21,14 @@ open class BaseActivity : AppCompatActivity() {
         progressDialog.setMessage(getString(R.string.loading))
         progressDialog.isIndeterminate = true
         progressDialog.show()
+    }
+
+    fun verificarConexion(): NetworkInfo? {
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+
+        return networkInfo
     }
 
     fun hideProgressDialog() {

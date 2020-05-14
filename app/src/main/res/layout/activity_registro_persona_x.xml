@@ -58,6 +58,27 @@
                         android:textSize="20sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/nombreEmpres22"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:hint="Nombre de Empresa"
+                        app:endIconMode="clear_text"
+                        app:errorEnabled="true"
+                        app:startIconDrawable="@drawable/ic_perm_identity_black_24dp">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/nombreEmpresaField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:ems="10"
+                            android:inputType="text" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/profesion22"
                         android:layout_width="match_parent"
                         android:layout_height="72dp"
@@ -80,12 +101,12 @@
 
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/nombreTextInputLayout4"
+                        android:id="@+id/ciudadTextInputLayout4"
                         android:layout_width="match_parent"
                         android:layout_height="72dp"
                         android:hint="Ciudad"
                         app:endIconMode="clear_text"
-                        app:startIconDrawable="@drawable/bottom_perfil">
+                        app:startIconDrawable="@drawable/ic_location_on_black_24dp">
 
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -100,6 +121,26 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/correoTextInputLayout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:hint="Correo electronico"
+                        app:endIconMode="clear_text"
+                        app:startIconDrawable="@drawable/ic_email_black_24dp">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/correoField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:ems="10"
+                            android:inputType="textEmailAddress" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/nombreTextInputLayout6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -107,7 +148,7 @@
                         app:counterEnabled="true"
                         app:counterMaxLength="10"
                         app:endIconMode="clear_text"
-                        app:startIconDrawable="@drawable/bottom_perfil">
+                        app:startIconDrawable="@drawable/ic_phone_black_24dp">
 
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -124,18 +165,20 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/serviciotagX221"
                         android:layout_width="match_parent"
-                        android:layout_height="72dp"
+                        android:layout_height="wrap_content"
                         android:hint="Servicios"
-                        app:endIconMode="custom"
                         app:endIconDrawable="@drawable/ic_add_circle_black_24dp"
+                        app:endIconMode="custom"
+                        app:endIconTint="#43A047"
                         app:errorEnabled="true"
-                        app:startIconDrawable="@drawable/bottom_perfil">
+                        app:helperText="Servicios agregados"
+                        app:startIconDrawable="@drawable/ic_pan_tool_black_24dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/servicioTag"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/white"
+                            android:background="#FFFFFF"
                             android:ems="10"
                             android:inputType="text" />
                     </com.google.android.material.textfield.TextInputLayout>

@@ -45,6 +45,7 @@ class Login : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        showProgressDialog()
 
 
 
@@ -80,22 +81,27 @@ class Login : BaseActivity(), View.OnClickListener {
 
              if (isChecked){
                  //"Switch1:ON"
-                  ver5 = hashMapOf("mostrarEnLista" to true)
+                  ver5 = hashMapOf("mostrarEnListaBd" to true)
+                 showProgressDialog()
+
 
              } else {
                  //"Switch1:OFF"
-                 ver5 = hashMapOf("mostrarEnLista" to false)
+                 ver5 = hashMapOf("mostrarEnListaBd" to false)
+                 showProgressDialog()
 
              }
             db.collection("usuarios").document(convSt(auth.uid))
                 .set(ver5, SetOptions.merge())
                 .addOnSuccessListener {
                     //Log.d(TAG, "DocumentSnapshot successfully written!")
+                    hideProgressDialog()
 
                 }
                 .addOnFailureListener {
                     //e -> Log.w(TAG, "Error writing document", e)
                     DesignerToast.Error(this@Login, "Intenta mas tarde", Gravity.CENTER, Toast.LENGTH_SHORT)
+                    hideProgressDialog()
                 }
 
             //Toast.makeText(this@Login, message, Toast.LENGTH_SHORT).show()
@@ -104,6 +110,7 @@ class Login : BaseActivity(), View.OnClickListener {
 
 
     }
+
 
     override fun onBackPressed() {
         super.onBackPressed()
@@ -114,18 +121,13 @@ class Login : BaseActivity(), View.OnClickListener {
 
 
 
-    private fun verificarConexion(): NetworkInfo? {
-        val connectivityManager =
-            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo = connectivityManager.activeNetworkInfo
 
-        return networkInfo
-    }
 
     // [START on_start_check_user]
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
+        showProgressDialog()
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }
@@ -281,19 +283,19 @@ class Login : BaseActivity(), View.OnClickListener {
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    ciudad3.text = "Ciudad: "+document.getString("ciudad")
-                    servicio3.text = "Profesion: "+document.getString("profesion")
-                    telefono3.text = "Telefono: "+document.getString("telefono")
-                    if (document.getString("estado") == "verificado" ){
+                    ciudad3.text = "Ciudad: "+document.getString("ciudadBd")
+                    servicio3.text = "Profesion: "+document.getString("profesionBd")
+                    telefono3.text = "Telefono: "+document.getString("telefonoBd")
+                    if (document.getString("estadoBd") == "verificado" ){
                         //aliado_app.visibility = View.GONE
                         aliado_app.text = "Editar datos"
                         vistaAliado()
-                    }else if (document.getString("estado") == "noVerificado"){
+                    }else if (document.getString("estadoBd") == "noVerificado"){
                         aliado_app.visibility = View.VISIBLE
                         aliado_app.text = "QUIERO SER ALIADO"
                     }
 
-                    mostrarEnLista.isChecked = document.getBoolean("mostrarEnLista") == true
+                    mostrarEnLista.isChecked = document.getBoolean("mostrarEnListaBd") == true
 
 
 
