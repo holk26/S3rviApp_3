@@ -7,6 +7,7 @@ import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.view.Menu
 import android.view.View
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -249,6 +250,14 @@ class Login : BaseActivity(), View.OnClickListener {
         ciudad3.visibility = View.GONE
         servicio3.visibility = View.GONE
         telefono3.visibility = View.GONE
+    }
+
+    //llamar el menu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.main, menu)
+
+        return true
     }
 
 

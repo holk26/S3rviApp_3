@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.vdx.designertoast.DesignerToast
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var auth: FirebaseAuth
     var doubleBackToExitPressedOnce = false
@@ -124,6 +124,7 @@ class MainActivity : AppCompatActivity() {
         openFragment(fragment)
 
 
+
     }
 
     private fun ActionHome() {
@@ -136,6 +137,7 @@ class MainActivity : AppCompatActivity() {
         val fragment = FragmentBuscar.newInstance("hola","hola2")
         openFragment(fragment)
 
+
     }
 
 
@@ -147,35 +149,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    // funcinamiento a el menu
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle item selection
-        return when (item.itemId) {
-            R.id.menu_inicio_sesion -> {
-                Btn_inicio_sesion()
-                true
-            }
-           /* R.id.help -> {
-                //showHelp()
-                //Toast.makeText(this@MainActivity, "You clicked me help.", Toast.LENGTH_SHORT).show()
-                DesignerToast.Success(this@MainActivity, "Success Toast", Gravity.CENTER, Toast.LENGTH_SHORT)
 
-
-                true
-            }*/
-            R.id.Acerca3 -> {
-                val intent = Intent(baseContext, AcercaDeMi::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.salir12 -> {
-
-                finish()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 
 
     fun Btn_inicio_sesion(){

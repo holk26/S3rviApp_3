@@ -9,95 +9,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
-    <LinearLayout
-            android:orientation="horizontal"
+
+        <TextView
+            android:id="@+id/textView15"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7">
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="PRÓXIMAMENTE"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:padding="5dp">
-
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/profile_img"
-                    tools:src="@tools:sample/avatars" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Nome"
-                    android:id="@+id/nomeId"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="30dp"
-                    android:layout_marginTop="15dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Visited Places: "
-                    android:id="@+id/visitedPlacesId"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="15dp"
-                    android:layout_marginTop="15dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Points: "
-                    android:id="@+id/pointsId"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="15dp"
-                    android:layout_marginTop="10dp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
+        <TextView
+            android:id="@+id/textView16"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-        </LinearLayout>
-
+            android:layout_height="wrap_content"
+            android:text="Esta opcion estara disponible en nuestras próximas \nactualizaciones."
+            android:textAlignment="center" />
     </LinearLayout>
 
 

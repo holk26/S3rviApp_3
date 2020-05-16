@@ -1,6 +1,7 @@
 package com.hcabreraar.s3rviapp
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
@@ -8,6 +9,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.Chip
 import com.google.common.collect.Iterables
@@ -46,12 +48,10 @@ class RegistroPersonaX : BaseActivity() {
         // Access a Cloud Firestore instance from your Activity
        db = FirebaseFirestore.getInstance()
 
-        registerBtn.setOnClickListener(){
+        registerBtn.setOnClickListener {
             if (verificarConexion() != null) {
-                showProgressDialog()
                 //Toast.makeText(this@RegistroPersonaX, "logiado"+nameField.getText().toString(), Toast.LENGTH_SHORT).show()
-                chipServicio()
-                cargarFirebaseDatos()
+                validarDatos()
 
             }else{
             Toast.makeText(this@RegistroPersonaX, "Revisa tu conexion a internet", Toast.LENGTH_SHORT).show()
@@ -85,6 +85,14 @@ class RegistroPersonaX : BaseActivity() {
 
     }//onCreate fin
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun validarDatos() {
+        nombreEmpres22.error = "Campo vacio"
+        nombreEmpres22.isFocused
+        //nombreEmpres22.error = null
+        cargarFirebaseDatos()
+    }
+
     private fun inflarChip(holk: Array<String>) {
 
         val inflater = LayoutInflater.from(this@RegistroPersonaX)
@@ -102,7 +110,7 @@ class RegistroPersonaX : BaseActivity() {
             chip_group2.addView(chip_item2)
             chip_item2.text
 
-            servicioTag.setText("");
+            servicioTag.setText("")
 
         }
 
@@ -144,6 +152,8 @@ class RegistroPersonaX : BaseActivity() {
 //Carga los datos a la base de datos
     private fun cargarFirebaseDatos(){
 
+        chipServicio()
+
         convSt(auth.uid)
         //estadoXml.text = auth.uid
         //var otg: = auth.uid
@@ -155,18 +165,18 @@ class RegistroPersonaX : BaseActivity() {
         }
 
         val usuario33 = hashMapOf(
-            "profesionBd" to ProfesionField.getText().toString(),
+            "profesionBd" to ProfesionField.text.toString(),
             "ServicioMatrizBd" to mutableList,
-            "nombreEmpresaBd" to nombreEmpresaField.getText().toString(),
-            "ciudadBd" to ciudadField.getText().toString(),
-            "telefonoBd" to phoneField.getText().toString(),
-            "emailBd" to correoField.getText().toString(),
+            "nombreEmpresaBd" to nombreEmpresaField.text.toString(),
+            "ciudadBd" to ciudadField.text.toString(),
+            "telefonoBd" to phoneField.text.toString(),
+            "emailBd" to correoField.text.toString(),
             "nombreBd" to userName,
             "fotoBd" to userFoto,
             "estadoBd" to "verificado",
             "likeBd" to 0,
             "dislikeBd" to 0,
-            "mostrarEnListaBd" to false,
+            //"mostrarEnListaBd" to false,
             "idUsuarioBd" to x
         )
 
@@ -196,6 +206,7 @@ class RegistroPersonaX : BaseActivity() {
     }
 
     private fun datosFireStone() {
+        showProgressDialog()
         var x = ""
 
         val nullString: String? = auth.uid
@@ -234,6 +245,7 @@ class RegistroPersonaX : BaseActivity() {
             .addOnFailureListener { exception ->
                 //Log.d(TAG, "get failed with ", exception)
             }
+        hideProgressDialog()
     }
 
     private fun llamarMatriz(document: DocumentSnapshot) {
@@ -258,8 +270,8 @@ class RegistroPersonaX : BaseActivity() {
 
         for (i in 0 until chip_group2.childCount) {
                 val chip = chip_group2.getChildAt(i) as Chip
-                var vChip : Chip = chip.findViewById(chip.id)
-                var chipNameX3 = vChip.getText().toString()
+                val vChip : Chip = chip.findViewById(chip.id)
+                val chipNameX3 = vChip.text.toString()
                 mutableList.add(chipNameX3)
         }
         Log.d("chipServicio", "mutableListO = $mutableList")

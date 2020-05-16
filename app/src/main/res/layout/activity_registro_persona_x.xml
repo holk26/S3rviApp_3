@@ -60,7 +60,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/nombreEmpres22"
                         android:layout_width="match_parent"
-                        android:layout_height="72dp"
+                        android:layout_height="wrap_content"
                         android:hint="Nombre de Empresa"
                         app:endIconMode="clear_text"
                         app:errorEnabled="true"
@@ -81,7 +81,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/profesion22"
                         android:layout_width="match_parent"
-                        android:layout_height="72dp"
+                        android:layout_height="wrap_content"
                         android:hint="Profesion"
                         app:endIconMode="clear_text"
                         app:errorEnabled="true"
@@ -103,7 +103,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/ciudadTextInputLayout4"
                         android:layout_width="match_parent"
-                        android:layout_height="72dp"
+                        android:layout_height="wrap_content"
                         android:hint="Ciudad"
                         app:endIconMode="clear_text"
                         app:startIconDrawable="@drawable/ic_location_on_black_24dp">
@@ -123,7 +123,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/correoTextInputLayout4"
                         android:layout_width="match_parent"
-                        android:layout_height="72dp"
+                        android:layout_height="wrap_content"
                         android:hint="Correo electronico"
                         app:endIconMode="clear_text"
                         app:startIconDrawable="@drawable/ic_email_black_24dp">
