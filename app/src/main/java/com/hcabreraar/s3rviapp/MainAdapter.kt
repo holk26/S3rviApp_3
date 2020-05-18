@@ -57,7 +57,7 @@ class MainAdapter(private val context: Context) : RecyclerView.Adapter<MainAdapt
             var userid3 = user.idUsuarioUs
 
 
-            itemView.setOnClickListener {
+            itemView.cardView.setOnClickListener {
                // DesignerToast.Success(context, userid3, Gravity.CENTER, Toast.LENGTH_SHORT)
 
                 val intent = Intent(context.applicationContext, ViewPerfil::class.java)

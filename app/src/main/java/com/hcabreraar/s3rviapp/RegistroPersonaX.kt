@@ -227,6 +227,15 @@ class RegistroPersonaX : BaseActivity() {
             //"mostrarEnListaBd" to false,
             "idUsuarioBd" to x
         )
+    //likes de la persona
+    db.collection("likes").document(convSt(auth.uid))
+        .set( hashMapOf("like" to 0, "dislike" to 0))
+        .addOnSuccessListener {
+            Log.d("TAG", "DocumentSnapshot successfully written!")
+        }
+        .addOnFailureListener {
+                e -> Log.w("TAG", "Error writing document", e)
+        }
 
         db.collection("usuarios").document(convSt(auth.uid))
             .set(usuario33)
@@ -241,6 +250,8 @@ class RegistroPersonaX : BaseActivity() {
             .addOnFailureListener {
                     //e -> Log.w(TAG, "Error writing document", e)
             }
+
+
     }
 
     private fun convSt(datoFi: String?): String {

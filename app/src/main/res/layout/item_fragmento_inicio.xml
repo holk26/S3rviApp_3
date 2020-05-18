@@ -5,13 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:background="?android:attr/selectableItemBackground"
         app:cardCornerRadius="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:checkable="true"
         app:cardElevation="7dp">
 
         <LinearLayout
@@ -33,7 +36,7 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/nombreEmpresaXml"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -41,17 +44,15 @@
                     android:text="@string/app_name"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    android:textColor="@color/material_on_surface_emphasis_high_type"
                     android:textStyle="bold" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/servicioXml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:drawableStart="@drawable/ic_assignment_ind_black_24dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/black"
                     app:drawableTint="#263238" />
 
 
@@ -62,13 +63,12 @@
                         android:layout_weight="1"
                         app:srcCompat="@drawable/ic_location_on_black_24dp" />-->
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/ciudadXml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_location_on_black_24dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/black"
                     app:drawableTint="#263238" />
 
 
@@ -76,7 +76,7 @@
 
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </LinearLayout>

@@ -58,14 +58,16 @@ class FragmentInicio : Fragment() {
         observeData()
 
         shimer.startShimmer()
-        viewModel.fetchUserData().observe(getViewLifecycleOwner(), Observer {
-            shimer.stopShimmer()
-            shimer.visibility = View.GONE
-            adapter.setListData(it)
-            adapter.notifyDataSetChanged()
-            observeData()
+        viewModel.run {
+            fetchUserData().observe(viewLifecycleOwner, Observer {
+                shimer.stopShimmer()
+                shimer.visibility = View.GONE
+                adapter.setListData(it)
+                adapter.notifyDataSetChanged()
 
-        })
+
+            })
+        }
 
     }
 

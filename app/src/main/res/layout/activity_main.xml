@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!--<androidx.appcompat.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,30 +27,39 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/colorPrimary"
+                    android:src="@drawable/persona"/>
 
-
-
-                <TextView
-                    android:id="@+id/textView15"
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="30dp"
-                    android:layout_weight="1"
-                    android:text="Inicio" />
-               android:drawableStart="@drawable/bottom_perfil"
-                   app:drawableTint="#263238"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textStyle="bold"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:textColor="@color/colorPrimary"
+
+                    android:text="Hola Homero" />
+
+
+
+
             </LinearLayout>
-             android:layout_below="@+id/toolbar"
-        </androidx.appcompat.widget.Toolbar>-->
+
+        </androidx.appcompat.widget.Toolbar>
 
         <FrameLayout
             android:id="@+id/contenedor3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
             android:layout_above="@id/bottomNavigationView"
-
             android:layout_marginTop="0dp">
 
         </FrameLayout>

@@ -80,8 +80,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/conten_barra_bottom"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
         android:background="@drawable/radio"
         android:visibility="visible"
         tools:visibility="gone">
@@ -92,8 +91,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="vertical"
             android:gravity="center"
+            android:orientation="vertical"
             android:visibility="gone"
             tools:visibility="visible">
 
@@ -105,7 +104,6 @@
                 android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:text="@string/trabajo_app"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
-
 
 
             <Button

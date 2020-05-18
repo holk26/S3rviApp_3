@@ -43,20 +43,20 @@
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/imageView344"
-            android:layout_width="0dp"
-            android:layout_height="108dp"
+            android:layout_width="118dp"
+            android:layout_height="118dp"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="@+id/view"
-            app:srcCompat="@drawable/persona"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            android:src="@drawable/persona" />
 
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/nombrePerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -71,7 +71,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView344" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/ubicacionPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -79,9 +79,9 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintEnd_toEndOf="@+id/nombrePerfil"
+            app:layout_constraintStart_toStartOf="@+id/nombrePerfil"
+            app:layout_constraintTop_toBottomOf="@+id/nombrePerfil" />
 
 
         <com.airbnb.lottie.LottieAnimationView
@@ -110,7 +110,7 @@
             app:layout_constraintTop_toBottomOf="@+id/like_persona3" />
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/favorito44"
+            android:id="@+id/dislikeXml"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
@@ -128,10 +128,10 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@+id/favorito44"
-            app:layout_constraintEnd_toEndOf="@+id/favorito44"
-            app:layout_constraintStart_toStartOf="@+id/favorito44"
-            app:layout_constraintTop_toBottomOf="@+id/favorito44"
+            app:layout_constraintBottom_toBottomOf="@+id/dislikeXml"
+            app:layout_constraintEnd_toEndOf="@+id/dislikeXml"
+            app:layout_constraintStart_toStartOf="@+id/dislikeXml"
+            app:layout_constraintTop_toBottomOf="@+id/dislikeXml"
             app:layout_constraintVertical_bias="0.52" />
 
         <TextView
@@ -173,7 +173,7 @@
             app:layout_constraintTop_toTopOf="@+id/view2" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/profesionPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
