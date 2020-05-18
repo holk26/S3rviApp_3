@@ -1,17 +1,14 @@
 package com.hcabreraar.s3rviapp
 
+
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.Gravity
 import android.view.Menu
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.chip.Chip
-import com.vdx.designertoast.DesignerToast
 import kotlinx.android.synthetic.main.activity_acerca_de_mi.*
 
 
 class AcercaDeMi : BaseActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +17,7 @@ class AcercaDeMi : BaseActivity() {
         val code = BuildConfig.VERSION_CODE
         val name = BuildConfig.VERSION_NAME
         text_version.text = "Version: $code $name"
+
 
 
 

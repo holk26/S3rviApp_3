@@ -1,19 +1,15 @@
 package com.hcabreraar.s3rviapp
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.Chip
-import com.google.common.collect.Iterables
-import com.google.common.collect.Iterables.toArray
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -31,8 +27,7 @@ class RegistroPersonaX : BaseActivity() {
     var userName = ""
     var userFoto = ""
     lateinit var db : FirebaseFirestore
-    val nombreR = ""
-    val urlPhotoR = ""
+    var registradoYa = false
     val REQUEST_IMAGE_CAPTURE = 1
     lateinit var text_array : Array<String>
     var mutableList: MutableList<String> = mutableListOf()
@@ -41,6 +36,8 @@ class RegistroPersonaX : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_persona_x)
         //val inputText = outlinedTextField.editText?.text.toString()
+        showProgressDialog()
+        registerBtn.isEnabled=false
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
@@ -50,8 +47,15 @@ class RegistroPersonaX : BaseActivity() {
 
         registerBtn.setOnClickListener {
             if (verificarConexion() != null) {
-                //Toast.makeText(this@RegistroPersonaX, "logiado"+nameField.getText().toString(), Toast.LENGTH_SHORT).show()
-                validarDatos()
+                if (registradoYa){
+                    //auteticado actualizar
+                    validarDatos(true)
+                }else if (!registradoYa){
+                    //crear usuario
+                    validarDatos(false)
+                }
+
+
 
             }else{
             Toast.makeText(this@RegistroPersonaX, "Revisa tu conexion a internet", Toast.LENGTH_SHORT).show()
@@ -85,12 +89,52 @@ class RegistroPersonaX : BaseActivity() {
 
     }//onCreate fin
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun validarDatos() {
+    private fun validarDatos(b: Boolean) {
+
+        //true es autualizar
+        if (b){
+            actualizarDatosFirebase()
+        }else if (!b){
+            this.cargarFirebaseDatos()
+        }
+
         nombreEmpres22.error = "Campo vacio"
         nombreEmpres22.isFocused
         //nombreEmpres22.error = null
-        cargarFirebaseDatos()
+
+
+    }
+
+    private fun actualizarDatosFirebase() {
+        chipServicio()
+
+        val updateBd = db.collection("usuarios").document(convSt(auth.uid))
+
+        val actualizarUsuario = hashMapOf(
+            "profesionBd" to ProfesionField.text.toString(),
+            "ServicioMatrizBd" to mutableList,
+            "nombreEmpresaBd" to nombreEmpresaField.text.toString(),
+            "ciudadBd" to ciudadField.text.toString(),
+            "telefonoBd" to phoneField.text.toString(),
+            "emailBd" to correoField.text.toString(),
+            "descripcionBd" to descripcionField.text.toString(),
+            "nombreBd" to userName,
+            "fotoBd" to userFoto
+        )
+
+
+        updateBd
+            .update(actualizarUsuario)
+            .addOnSuccessListener {
+                Log.d("TAG", "DocumentSnapshot successfully updated!")
+                DesignerToast.Success(this@RegistroPersonaX, "Actualizacion Completada", Gravity.CENTER, Toast.LENGTH_SHORT)
+
+                val intent = Intent(baseContext, Login::class.java)
+                startActivity(intent)
+                finish()
+            }
+            .addOnFailureListener { e -> Log.w("TAG", "Error updating document", e) }
+
     }
 
     private fun inflarChip(holk: Array<String>) {
@@ -122,7 +166,7 @@ class RegistroPersonaX : BaseActivity() {
         super.onStart()
         showProgressDialog()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
+       var currentUser = auth.currentUser
         updateUI(currentUser)
     }
 
@@ -136,13 +180,14 @@ class RegistroPersonaX : BaseActivity() {
             userFoto = user2.photoUrl.toString()
 
             datosFireStone()
-            hideProgressDialog()
+
 
 
         }else{
             val intent = Intent(baseContext, Login::class.java)
             startActivity(intent)
         }
+        registerBtn.isEnabled=true
 
 
     }
@@ -171,10 +216,13 @@ class RegistroPersonaX : BaseActivity() {
             "ciudadBd" to ciudadField.text.toString(),
             "telefonoBd" to phoneField.text.toString(),
             "emailBd" to correoField.text.toString(),
+            "descripcionBd" to descripcionField.text.toString(),
             "nombreBd" to userName,
             "fotoBd" to userFoto,
+            "fechaRegistro" to Timestamp(Date()),
             "estadoBd" to "verificado",
             "likeBd" to 0,
+            "condicionesBd" to aceptaTerminos.isChecked,
             "dislikeBd" to 0,
             //"mostrarEnListaBd" to false,
             "idUsuarioBd" to x
@@ -219,19 +267,27 @@ class RegistroPersonaX : BaseActivity() {
                 if (document != null) {
 
                     if (document.getString("estadoBd") == "verificado" ){
+                        registradoYa = true
                         registerBtn.text = "Actualizar"
                         ciudadField.text = document.getString("ciudadBd")!!.toEditable()
                         correoField.text = document.getString("emailBd")!!.toEditable()
+                        descripcionField.text = document.getString("descripcionBd")!!.toEditable()
                         nombreEmpresaField.text = document.getString("nombreEmpresaBd")!!.toEditable()
+                        aceptaTerminos.visibility = View.GONE
+                        condicionesXml.visibility = View.GONE
 
                         llamarMatriz(document)
 
                         phoneField.text = document.getString("telefonoBd")!!.toEditable()
                         ProfesionField.text = document.getString("profesionBd")!!.toEditable()
                        // Picasso.get().load(userFoto).into(imagePerfilX2)
+                        hideProgressDialog()
 
                     }else{
+                        aceptaTerminos.visibility = View.VISIBLE
+                        condicionesXml.visibility = View.VISIBLE
                         registerBtn.text = "Registrate"
+                        hideProgressDialog()
 
                     }
 

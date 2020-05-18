@@ -23,4 +23,5 @@
     <string name="sign_out">Cerrar sesión</string>
     <string name="trabajo_app">Quiero ser aliado </string>
     <string name="detalle_app">Una herramienta innovadora y a la vez sencilla que permite crear, gestionar y acceder a servicios domiciliaros desde los servicios generales, el mantenimiento y reparación de electrodomésticos hasta asesorías profesionales de su micronegocio.</string>
+    <string name="terminosCon"><u>ACEPTAR TERMINOS Y CONDICIONES</u></string>
 </resources>
