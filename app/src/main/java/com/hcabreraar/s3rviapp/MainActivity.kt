@@ -26,6 +26,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         // Initialize Firebase Auth
+        setSupportActionBar(findViewById(R.id.toolbarHome))
         auth = FirebaseAuth.getInstance()
 
 
@@ -34,6 +35,11 @@ class MainActivity : BaseActivity() {
 
 
         init()
+
+        profile_image.setOnClickListener{
+
+
+        }
 
 
 

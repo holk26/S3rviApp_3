@@ -25,8 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login" />
-        <activity android:name=".MainActivity" />
-            <!--android:theme="@style/SplaxScreenTheme"-->
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppMaint"/>
         <activity android:name=".AcercaDeMi" />
     </application>
 
