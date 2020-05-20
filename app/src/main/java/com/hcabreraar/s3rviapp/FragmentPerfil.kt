@@ -36,14 +36,15 @@ class FragmentPerfil : Fragment() {
 
 
     }
-    public override fun onStart() {
+
+    override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null){
-            Toast.makeText(getActivity(), "usuario registrado", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(getActivity(), "usuario registrado", Toast.LENGTH_SHORT).show()
         }else{
-            Toast.makeText(getActivity(), "no hay registro", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(getActivity(), "no hay registro", Toast.LENGTH_SHORT).show()
         }
     }
 

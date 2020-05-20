@@ -5,7 +5,7 @@
     <item android:title="@string/buscar3" android:id="@+id/action_buscar" android:icon="@drawable/bottom_buscar"/>
     <item
         android:id="@+id/action_perfil"
-        android:icon="@drawable/bottom_perfil"
+        android:icon="@drawable/ic_stars_black_24dp"
         android:title="Favoritos" />
 
 </menu>

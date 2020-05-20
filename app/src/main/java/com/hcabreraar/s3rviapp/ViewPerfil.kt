@@ -53,7 +53,6 @@ class ViewPerfil : BaseActivity() {
 
     public override fun onStart() {
         super.onStart()
-        showProgressDialog()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         updateUI(currentUser)
@@ -65,7 +64,7 @@ class ViewPerfil : BaseActivity() {
 
 
         likes.update("dislike", FieldValue.increment(1))
-        likes.update("like", FieldValue.increment(-1))
+        likes.update("like", FieldValue.increment(1))
 
 
     }
@@ -115,7 +114,7 @@ class ViewPerfil : BaseActivity() {
         Glide.with(this).load(document.getString("fotoBd")!!).into(imageView344)
         nombrePerfil.text = document.getString("nombreEmpresaBd")!!
         ubicacionPerfil.text = document.getString("ciudadBd")!!
-        profesionPerfil.text = document.getString("profesionBd")!!
+        //profesionPerfil.text = document.getString("profesionBd")!!
 
 
 

@@ -9,6 +9,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
+import androidx.core.graphics.toColor
 import com.google.android.material.chip.Chip
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
@@ -29,6 +30,7 @@ class RegistroPersonaX : BaseActivity() {
     lateinit var db : FirebaseFirestore
     var registradoYa = false
     val REQUEST_IMAGE_CAPTURE = 1
+    var coChip = 0
     lateinit var text_array : Array<String>
     var mutableList: MutableList<String> = mutableListOf()
 
@@ -38,6 +40,8 @@ class RegistroPersonaX : BaseActivity() {
         //val inputText = outlinedTextField.editText?.text.toString()
         showProgressDialog()
         registerBtn.isEnabled=false
+        //var mdoll : String = "servicio hola como".split(" ")[0]
+        //Toast.makeText(this@RegistroPersonaX, mdoll, Toast.LENGTH_SHORT).show()
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
@@ -90,18 +94,129 @@ class RegistroPersonaX : BaseActivity() {
     }//onCreate fin
 
     private fun validarDatos(b: Boolean) {
+        Log.d("TAG homeroH", "puto registro! $b")
+
 
         //true es autualizar
         if (b){
-            actualizarDatosFirebase()
+            validarAutenticado()
+            //se llaman cuando se valide la informacion
+            //false se registra un usuario
         }else if (!b){
-            this.cargarFirebaseDatos()
+            validarRegistro()
+            //se llaman cuando se valide la informacion
         }
 
-        nombreEmpres22.error = "Campo vacio"
-        nombreEmpres22.isFocused
+
         //nombreEmpres22.error = null
 
+
+    }
+
+    private fun validarRegistro() {
+        Log.d("TAG homeroH", "Validando registro!")
+        var cont = 0
+          //nombreEmpresaField.text.toString().length cuenta los caracteres
+
+        if (nombreEmpresaField.text.toString().equals("")){
+            nombreEmpresaField.error = "Campo vacio"
+            nombreEmpresaField.requestFocus()
+        }else{cont += 1}
+        if (descripcionField.text.toString().equals("")){descripcionField.error = "Campo vacio"
+            descripcionField.requestFocus()
+        }else{cont += 1}
+        if (ProfesionField.text.toString().equals("")){ProfesionField.error = "Campo vacio"
+            ProfesionField.requestFocus()
+        }else{cont += 1}
+        if (ciudadField.text.toString().equals("")){ciudadField.error = "Campo vacio"
+            ciudadField.requestFocus()
+        }else{cont += 1}
+        if (correoField.text.toString().equals("")){correoField.error = "Campo vacio"
+            correoField.requestFocus()
+        }else{cont += 1}
+        if (phoneField.text.toString().equals("")){phoneField.error = "Campo vacio"
+            phoneField.requestFocus()
+        }else{cont += 1}
+
+        if (!aceptaTerminos.isChecked()){
+            aceptaTerminos.requestFocus()
+            DesignerToast.Error(this@RegistroPersonaX, "Acepta terminos y condiciones", Gravity.CENTER, Toast.LENGTH_SHORT)
+        }else{cont += 1}
+
+        chipServicio()
+
+        Log.d("TAG homeroH", "Abajo de chipServicio "+ArrayList(mutableList).toString().length)
+
+        if (ArrayList(mutableList).toString().length <= 2){
+            Log.d("TAG homeroH", "vacia: focus")
+            serviciotagX221.helperText = "Toca el + para agregar servicios"
+            //servicioTag.error = "Agrega servicios"
+            DesignerToast.Error(this@RegistroPersonaX, "Agrega servicios", Gravity.CENTER, Toast.LENGTH_SHORT)
+
+        }else{
+            serviciotagX221.helperText = "Servicios agregados"
+            cont += 1
+        }
+
+        if (cont == 8){
+            Log.d("TAG homeroH", "cargarFirebaseDatos()")
+            showProgressDialog()
+            registerBtn.isEnabled=false
+            cargarFirebaseDatos()
+        }
+
+
+        Log.d("TAG homeroH", "fin validando registro! $cont")
+    }
+
+    private fun validarAutenticado() {
+        Log.d("TAG homeroH", "Validando registro!")
+        var cont = 0
+        //nombreEmpresaField.text.toString().length cuenta los caracteres
+
+        if (nombreEmpresaField.text.toString().equals("")){
+            nombreEmpresaField.error = "Campo vacio"
+            nombreEmpresaField.requestFocus()
+        }else{cont += 1}
+        if (descripcionField.text.toString().equals("")){descripcionField.error = "Campo vacio"
+            descripcionField.requestFocus()
+        }else{cont += 1}
+        if (ProfesionField.text.toString().equals("")){ProfesionField.error = "Campo vacio"
+            ProfesionField.requestFocus()
+        }else{cont += 1}
+        if (ciudadField.text.toString().equals("")){ciudadField.error = "Campo vacio"
+            ciudadField.requestFocus()
+        }else{cont += 1}
+        if (correoField.text.toString().equals("")){correoField.error = "Campo vacio"
+            correoField.requestFocus()
+        }else{cont += 1}
+        if (phoneField.text.toString().equals("")){phoneField.error = "Campo vacio"
+            phoneField.requestFocus()
+        }else{cont += 1}
+
+
+        chipServicio()
+
+        Log.d("TAG homeroH", "Abajo de chipServicio "+ArrayList(mutableList).toString().length)
+
+        if (ArrayList(mutableList).toString().length <= 2){
+            Log.d("TAG homeroH", "vacia: focus")
+            serviciotagX221.helperText = "Toca el + para agregar servicios"
+            //servicioTag.error = "Agrega servicios"
+            DesignerToast.Error(this@RegistroPersonaX, "Agrega servicios", Gravity.CENTER, Toast.LENGTH_SHORT)
+
+
+        }else{
+            serviciotagX221.helperText = "Servicios agregados"
+            cont += 1
+        }
+
+        if (cont == 7){
+            Log.d("TAG homeroH", "cargarFirebaseDatos()")
+            showProgressDialog()
+            registerBtn.isEnabled=false
+            actualizarDatosFirebase()
+        }
 
     }
 
@@ -153,6 +268,7 @@ class RegistroPersonaX : BaseActivity() {
             }
             chip_group2.addView(chip_item2)
             chip_item2.text
+            serviciotagX221.helperText = "Servicios agregados"
 
             servicioTag.setText("")
 
@@ -178,6 +294,7 @@ class RegistroPersonaX : BaseActivity() {
 
             userName = user2.displayName.toString()
             userFoto = user2.photoUrl.toString()
+            registradoYa = false
 
             datosFireStone()
 
@@ -279,6 +396,7 @@ class RegistroPersonaX : BaseActivity() {
 
                     if (document.getString("estadoBd") == "verificado" ){
                         registradoYa = true
+                        serviciotagX221.helperText = "Servicios agregados"
                         registerBtn.text = "Actualizar"
                         ciudadField.text = document.getString("ciudadBd")!!.toEditable()
                         correoField.text = document.getString("emailBd")!!.toEditable()
@@ -332,8 +450,9 @@ class RegistroPersonaX : BaseActivity() {
 
     }
 
-
+//optimizar poner un retun de la mutableList
     private fun chipServicio(){
+       mutableList.clear()
 
         for (i in 0 until chip_group2.childCount) {
                 val chip = chip_group2.getChildAt(i) as Chip

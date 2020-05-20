@@ -11,10 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:background="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="8dp"
+        android:checkable="true"
         android:clickable="true"
         android:focusable="true"
-        android:checkable="true"
+        app:cardCornerRadius="8dp"
         app:cardElevation="7dp">
 
         <LinearLayout

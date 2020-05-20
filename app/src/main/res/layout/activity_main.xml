@@ -30,15 +30,17 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/toolbarInicio"
                 android:gravity="center_vertical">
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_image"
+                    android:id="@+id/profile_image66"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     app:civ_border_width="2dp"
                     app:civ_border_color="@color/colorPrimary"
                     android:src="@drawable/persona"/>
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textBinvenido"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -47,14 +49,14 @@
                     android:text="Hola" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/nombreUsuarioBd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textStyle="bold"
                     android:layout_marginLeft="5dp"
-
                     android:textColor="@color/colorPrimary"
-                    android:text="Homero" />
+                    android:text="@string/bienvenido" />
 
 
             </LinearLayout>
@@ -76,6 +78,8 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            app:elevation="8dp"
+            android:backgroundTint="?attr/colorSurface"
             android:layout_alignParentBottom="true"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_navigation" />

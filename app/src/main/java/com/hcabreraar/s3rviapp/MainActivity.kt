@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.vdx.designertoast.DesignerToast
@@ -36,12 +37,12 @@ class MainActivity : BaseActivity() {
 
         init()
 
-        profile_image.setOnClickListener{
+        profile_image66.setOnClickListener{
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
 
 
         }
-
-
 
 
 
@@ -77,11 +78,16 @@ class MainActivity : BaseActivity() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             //se logeo
+            nombreUsuarioBd.text = user.displayName!!.split(" ")[0]
+            Glide.with(this).load(user.photoUrl).into(profile_image66)
+            textBinvenido.visibility = View.VISIBLE
+
             //Toast.makeText(this@MainActivity, "logiado", Toast.LENGTH_SHORT).show()
             val listView: View? = findViewById(R.id.action_perfil)
             //listView?.visibility = View.VISIBLE ll
 
         }else{
+            textBinvenido.visibility = View.GONE
 
            
 
@@ -113,7 +119,7 @@ class MainActivity : BaseActivity() {
 
                 }
                 R.id.action_perfil -> {
-                    Toast.makeText(this@MainActivity, "perfil", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@MainActivity, "perfil", Toast.LENGTH_SHORT).show()
                     ActionPerfil()
                     true
 
