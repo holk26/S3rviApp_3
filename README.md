@@ -19,9 +19,13 @@ empleabilidad y rentabilidad
 comercial de sus usuarios.
 
 play store: 
+
+
 ![image](https://user-images.githubusercontent.com/23020718/193377203-70ca6fb1-c637-4328-a4b2-bb2cc7ed8aea.png)
 
 App
+
+
 ![image](https://user-images.githubusercontent.com/23020718/193376951-0dc212fe-1f2c-44bd-9ee6-e33d565f3ce5.png)
 ![image](https://user-images.githubusercontent.com/23020718/193376959-d8617452-96c2-48d8-9aa0-9c1c7a330dd4.png)
 ![image](https://user-images.githubusercontent.com/23020718/193376966-38dbf3ee-051f-4a5f-9458-d398c3e70a6f.png)
